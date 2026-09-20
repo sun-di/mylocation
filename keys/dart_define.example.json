@@ -1,0 +1,5 @@
+{
+  "AMAP_ANDROID_KEY": "在此填入高德 Android Key（用包名 + 签名 SHA1 申请）",
+  "AMAP_IOS_KEY": "在此填入高德 iOS Key（用 BundleId 申请）；留空则回退使用 Android Key",
+  "AMAP_WEB_KEY": "在此填入高德 Web 服务 Key（用于逆地理编码 / 输入提示 REST 接口）"
+}

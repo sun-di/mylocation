@@ -1,0 +1,39 @@
+name: showlocation
+description: 跨平台地图位置展示 App（Android/鸿蒙/iOS）
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 高德地图 Flutter 插件（社区维护 csp_amap_flutter_map，支持 AGP8 / compileSdk 36）
+  # 注意：pub.dev 版仅 Android+iOS；鸿蒙需 Gitee 完整版，后续单独处理
+  # 方案 B：本地 vendor 覆盖，修复 location2Map 把纬度校验误写成海拔校验的 bug
+  # （否则真实 GPS 海拔 >90m 时 onLocationChanged 会被静默丢弃）
+  csp_amap_flutter_map:
+    path: vendor/csp_amap_flutter_map
+  # 网络请求（逆地理编码 REST API）
+  http: ^1.2.0
+  # 权限请求
+  permission_handler: ^11.3.0
+  # 提示反馈统一用 SnackBar；复制位置用气泡展示，
+  # 原 clipboard / fluttertoast 依赖已无引用，故移除。
+  # 本地键值持久化（收藏位置 + always 书签 id）
+  shared_preferences: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/car_red.png
+    - assets/icons/car_green.png
+    - assets/icons/pin_blue.png
+    - assets/icons/pin_violet.png
